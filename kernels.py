@@ -69,14 +69,15 @@ def kernel_personalizado (n):
     personalizado_array = np.empty((n,n), dtype = float)
 
     for f in range(1, n + 1):
-        fila =  (input(f"Ingrese los valores de la fila {f} separados por espacios:"))            
-        elementos_lista = [float(x) for x in fila.split()]
-        personalizado_array [f -1] = elementos_lista
-            
+        while True: 
+            fila = (input(f"Ingrese los valores de la fila {f} separados por espacios: ")) 
+            if len(fila.split()) != n:
+                print(f'ERROR: Debe ingresar exactamente {n} numeros')
+            else:       
+                try:
+                    elementos_lista = [float(x) for x in fila.split()]
+                    personalizado_array [f -1] = elementos_lista
+                    break
+                except ValueError:
+                    print('ERROR, los valores no son numeros reales')
     return personalizado_array
-
-try:
-    print(kernel_personalizado(int(input("Ingrese el tamaño del kernel: "))))
-
-except ValueError:
-    print('ERROR, los valores no son numeros reales')
