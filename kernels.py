@@ -81,3 +81,9 @@ def kernel_personalizado (n):
                 except ValueError:
                     print('ERROR, los valores no son numeros reales')
     return personalizado_array
+
+def normalizacion (salida):
+    valor_minimo = np.min(salida)
+    valor_maximo = np.max(salida)
+    normalizado = ((salida - valor_minimo) / (valor_maximo - valor_minimo) * 255)
+    return normalizado
