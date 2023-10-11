@@ -86,8 +86,9 @@ def motion_blur():
 
 def kernel_personalizado ():
     n = input('Ingrese un numero: ')
-    while not n.isdecimal():
-        n = input('Error. Ingrese un numero: ')
+
+    while not n.isdecimal() or int(n) % 2 == 0:
+        n = input('Ingrese el tamaño del kernel: ')
     n = int(n)
 
     personalizado_array = np.empty((n,n), dtype = float)
