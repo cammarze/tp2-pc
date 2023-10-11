@@ -84,9 +84,13 @@ def motion_blur():
     kernel_motionblur = np.eye(11, dtype = int)[:, ::-1]
     return kernel_motionblur
 
-def kernel_personalizado (n):
-    personalizado_array = np.empty((n,n), dtype = float)
+def kernel_personalizado ():
+    n = input('Ingrese un numero: ')
+    while not n.isdecimal():
+        n = input('Error. Ingrese un numero: ')
+    n = int(n)
 
+    personalizado_array = np.empty((n,n), dtype = float)
     for f in range(1, n + 1):
         while True: 
             fila = (input(f"Ingrese los valores de la fila {f} separados por espacios: ")) 

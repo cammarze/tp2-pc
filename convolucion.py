@@ -7,12 +7,11 @@ img_ing = input('Ingrese el nombre del archivo de la imagen: ')
 imagen = Image.open('test_images/' + img_ing)
 img_arr = np.array(imagen)
 
-print(img_arr.shape)
 plt.imshow(img_arr, cmap='gray')
 plt.show()
 
-for i, operacion in enumerate(f.operaciones.values()):
-    print(f'{i}. {operacion}')
+for i, operacion in enumerate(f.operaciones.values(), 1):
+    print(f'{i}. {operacion.__name__}')
 kernel = f.operaciones[input('Ingrese la operacion: ')]()
 
 filas_img, cols_img = img_arr.shape #Guardo las filas y columnas de la imagen
@@ -23,7 +22,7 @@ padding_fila = filas_kernel // 2
 padding_col = cols_kernel // 2
 img_pad = np.pad(img_arr, ((padding_fila, padding_fila), (padding_col, padding_col)), mode='edge') #Relleno los bordes de la imagen con los valores vecinos
 
-for fila_img in range(filas_img): #Evito los bordes de la imagen
+for fila_img in range(filas_img):
     for col_img in range(cols_img):
         resultado = 0
         for fila_kernel in range(filas_kernel):
@@ -34,6 +33,5 @@ for fila_img in range(filas_img): #Evito los bordes de la imagen
                 resultado += img_pad[fila_actual, col_actual] * kernel[fila_kernel, col_kernel]
         conv_img[fila_img, col_img] = resultado
 
-print(conv_img.shape)
 plt.imshow(conv_img, cmap='gray')
 plt.show()
