@@ -48,5 +48,5 @@ if __name__ == "__main__":
             plt.imshow(img_conv_rgb, cmap = 'gray')
             plt.show()
         
-        print('Operacion realizada con exito!')
+    print('Operacion realizada con exito!')
 
