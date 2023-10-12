@@ -84,7 +84,7 @@ def kernel_personalizado ():
     n = input('Ingrese el tamaño del kernel: ')
 
     while not n.isdecimal() or int(n) % 2 == 0:
-        n = input('Ingrese el tamaño del kernel: ')
+        n = input('Ingrese el tamaño del kernel (debe ser un numero e impar): ')
     n = int(n)
 
     personalizado_array = np.empty((n,n), dtype = float)
