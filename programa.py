@@ -4,22 +4,6 @@ import matplotlib.pyplot as plt  #Para mostrar la imagen
 import funciones as f
 
 def main():
-    """
-    Programa principal para llevar a cabo el procesamiento de las imagenes. Permite al usuario cargar la imagen (posteriormente visualizarla),
-    y seleccionar una operación (donde se aplica la umbralizacion o la convolucion con distintos tipos de kernels). 
-
-    Interacciones con el usuario:
-    -----------------------------
-    - El programa le solicita el nombre del archivo.
-    -  La imagen se carga y posteriormente se muestra una lista con las distintas operaciones. 
-    - El usuario debe ingresar el numero correspondiente de la operacion.
-    - Para "Kernel personalizado" -- el usuario tiene la posibilidad de ingresar el tamaño y los valores del kernel. 
-    - Despues de la selección, se solicita al usuario ingresar un nombre para el archivo de salida (formato PNG).
-    - Se aplica la operacion a la imagen igresada, luego muestra el resultado. 
-
-    Si el nombre del archivo no existe o el numero de la operacion ingresada no se ecuentra en la lista, se muestra 
-    un mensaje de error y el programa termina. 
-    """
     try:
         img_ing = input('Ingrese el nombre del archivo de la imagen: ')
         img = Image.open('test_images//' + img_ing)
@@ -27,11 +11,6 @@ def main():
         
         plt.imshow(img_arr, cmap='gray')
         plt.show()
-
-        nombre_salida = input('Ingrese el nombre del archivo de salida (SIN extension): ')
-        while '.' in nombre_salida:
-            nombre_salida = input('Nombre SIN extension: ')
-        nombre_salida += '.png' #Para que sea en formato .png
 
         print('OPERACIONES')
         print('-----------')
@@ -42,11 +21,10 @@ def main():
             print("Operación inválida!")
             exit()
 
-
-
         if opcion == '1': 
             # aplica umbralizacion a la imagen utilizando la función umbralizacion del modulo 'f'
             imagen = f.umbralizacion(img_arr) 
+            nombre_salida = f.nombre_salida()
 
         else:
             kernel = f.operaciones[opcion]()
@@ -57,6 +35,7 @@ def main():
             else: # para las imagenes RGB
                 imagen = f.convolucion_rgb(img_arr, kernel)
 
+        nombre_salida = f.nombre_salida()
         imagen = Image.fromarray(imagen) #Convierto el array en una imagen
         imagen.save(nombre_salida) #Guardo imagen con el nombre ingresado por el usuario
 
