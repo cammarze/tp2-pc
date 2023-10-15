@@ -85,15 +85,11 @@ def umbralizacion(img_arr:list) -> list:
 #Nombre archivo salida
 def nombre_salida() -> str:
     """
-    Pide el nombre del archivo de salida. El archivo tendra la extension .png
-
-    Returns:
-    str -- nombre del archivo de salida en formato png
+    Pide el nombre del archivo de salida
     """
     nombre_salida = input('Ingrese el nombre del archivo de salida (SIN extension): ')
     while '.' in nombre_salida:
         nombre_salida = input('Nombre SIN extension: ')
-    nombre_salida += '.png' #Para que sea en formato .png
     return nombre_salida
 
 #Kernels

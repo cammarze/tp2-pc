@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt  #Para mostrar la imagen
 import funciones as f
 
 def main():
+
     try:
         img_ing = input('Ingrese el nombre del archivo de la imagen: ')
         img = Image.open('test_images//' + img_ing)
@@ -35,9 +36,9 @@ def main():
             else: # para las imagenes RGB
                 imagen = f.convolucion_rgb(img_arr, kernel)
 
-        nombre_salida = f.nombre_salida()
+            nombre_salida = f.nombre_salida()
         imagen = Image.fromarray(imagen) #Convierto el array en una imagen
-        imagen.save(nombre_salida) #Guardo imagen con el nombre ingresado por el usuario
+        imagen.save(nombre_salida + '.png') #Guardo imagen con el nombre ingresado por el usuario en formato png
 
         print('Operacion realizada con exito!')
 
