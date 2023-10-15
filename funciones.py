@@ -80,6 +80,7 @@ def convolucion_rgb (img, kernel):
     conv_img = (conv_img - min_values) / (max_values - min_values) #Pixeles quedan entre 0 y 1
     conv_img *= 255
     conv_img = conv_img.astype(np.uint8) #Convierte los pixeles con valores float a int (trunca)
+    
     return conv_img
 
 #Umbralizacion
