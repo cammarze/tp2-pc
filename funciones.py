@@ -22,7 +22,7 @@ def convolucion (img, kernel):
 
     padding_fila = filas_kernel // 2
     padding_col = cols_kernel // 2
-    img_pad = np.pad(img_arr, ((padding_fila, padding_fila), (padding_col, padding_col), mode='edge') #Relleno los bordes de la imagen con los valores vecinos
+    img_pad = np.pad(img_arr, ((padding_fila, padding_fila), (padding_col, padding_col)), mode='edge') #Relleno los bordes de la imagen con los valores vecinos
 
     for fila_img in range(filas_img):
         for col_img in range(cols_img):#itera a traves de as filas y columnas de la imagen
