@@ -1,19 +1,19 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-#Umbralizacion
-def umbralizacion(img_arr:list) -> list:
-    umbral = input('Ingrese umbral: ')
-    while not umbral.isdecimal() or not 0 <= float(umbral) <= 255:
-        umbral = input('Error. Ingrese un numero entre 0 y 255: ')
-    umbral = float(umbral)
-
-    img_arr[img_arr >= umbral] = 255
-    img_arr[img_arr < umbral] = 0
-    return img_arr
-
-#Convolucion blanco y negro
+# Funciones para realizarla conovlcuion en escala de grises y RGB, dado una imagen de entrada se realiza
+#la convolucion con un kernel especificado. Al finalizar, se lleva a cabo el relleno de bordes
+#normalización y ajuste de tipos de datos.
 def convolucion (img, kernel):
+    """
+    Realiza una convolución en escala de grises.
+    Parameters:
+    img -- La imagen de entrada (escala de grises).
+    kernel (np.array) -- El kernel de convolución en formato NumPy array.
+
+    Returns:
+    np.array -- La imagen resultante después de la convolución.
+    """
     img_arr = np.array(img, dtype=np.float32)
 
     filas_img, cols_img = img.shape #Guardo las filas y columnas de la imagen
@@ -42,9 +42,18 @@ def convolucion (img, kernel):
     conv_img = conv_img.astype(np.uint8) #Convierte los pixeles con valores float a int (trunca)
 
     return conv_img
-
-#Convolucion color
+    
 def convolucion_rgb (img, kernel):
+    """
+    Realiza una convolución en una imagen RGB.
+
+    Parameters:
+    img -- La imagen de entrada con tres canales (rojo, verde y azul).
+    kernel (np.array) -- El kernel de convolución en formato NumPy array.
+
+    Returns:
+    np.array -- La imagen resultante después de la convolución.
+    """
     img_arr = np.array(img, dtype=np.float32)
 
     filas_img, cols_img, canales = img_arr.shape 
@@ -73,12 +82,17 @@ def convolucion_rgb (img, kernel):
     conv_img = conv_img.astype(np.uint8) #Convierte los pixeles con valores float a int (trunca)
     return conv_img
 
-#Normalizacion
-def normalizacion (salida):
-    valor_minimo = np.min(salida)
-    valor_maximo = np.max(salida)
-    normalizado = ((salida - valor_minimo) / (valor_maximo - valor_minimo) * 255)
-    return normalizado
+#Umbralizacion
+def umbralizacion(img_arr:list) -> list:
+    umbral = input('Ingrese umbral: ')
+    while not umbral.isdecimal() or not 0 <= float(umbral) <= 255: 
+        umbral = input('Error. Ingrese un numero entre 0 y 255: ')
+    umbral = float(umbral)
+
+    img_arr[img_arr >= umbral] = 255
+    img_arr[img_arr < umbral] = 0
+    return img_arr
+
 
 #Kernels
 def identidad ():
@@ -147,9 +161,17 @@ def motion_blur():
     return kernel_motionblur
 
 def kernel_personalizado ():
-    n = input('Ingrese un numero: ')
-    while not n.isdecimal():
-        n = input('Error. Ingrese un numero: ')
+"""
+Crea un kernel personalizado a partir de los datos ingresados por el ususario.
+La funcion le solicita al usuario que ingrese el tamaño del kernel a realizar (debe ser un numero entero e impar). Luego, 
+pide los valores para cada fila del kernel. Estos son almacenados en un formato Numpy array. 
+
+Returns:
+np.array -- Kernel personalizado creado por el usuario
+"""
+    n = input('Ingrese el tamaño del kernel: ')
+    while not n.isdecimal() or int(n) % 2 == 0: #error en caso de que el usuario ingresa un str o el tamaño del kernel es par
+        n = input('Ingrese el tamaño del kernel (debe ser un numero e impar): ')
     n = int(n)
 
     personalizado_array = np.empty((n,n), dtype = float)
