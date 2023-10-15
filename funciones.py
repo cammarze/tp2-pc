@@ -1,9 +1,9 @@
 import numpy as np
-import matplotlib.pyplot as plt
 
 # Funciones para realizarla conovlcuion en escala de grises y RGB, dado una imagen de entrada se realiza
 #la convolucion con un kernel especificado. Al finalizar, se lleva a cabo el relleno de bordes
 #normalización y ajuste de tipos de datos.
+
 def convolucion (img, kernel):
     """
     Realiza una convolución en escala de grises.
@@ -24,7 +24,7 @@ def convolucion (img, kernel):
     padding_col = cols_kernel // 2
     img_pad = np.pad(img_arr, padding_fila, mode='edge') #Relleno los bordes de la imagen con los valores vecinos
 
-    for fila_img in range(filas_img): #Evito los bordes de la imagen
+    for fila_img in range(filas_img):
         for col_img in range(cols_img):
             resultado = 0
             for fila_kernel in range(filas_kernel):
@@ -161,17 +161,17 @@ def motion_blur():
     return kernel_motionblur
 
 def kernel_personalizado ():
-"""
-Crea un kernel personalizado a partir de los datos ingresados por el ususario.
-La funcion le solicita al usuario que ingrese el tamaño del kernel a realizar (debe ser un numero entero e impar). Luego, 
-pide los valores para cada fila del kernel. Estos son almacenados en un formato Numpy array. 
+    """
+    Crea un kernel personalizado a partir de los datos ingresados por el ususario.
+    La funcion le solicita al usuario que ingrese el tamaño del kernel a realizar (debe ser un numero entero e impar). Luego, 
+    pide los valores para cada fila del kernel. Estos son almacenados en un formato Numpy array. 
 
-Returns:
-np.array -- Kernel personalizado creado por el usuario
-"""
+    Returns:
+    np.array -- Kernel personalizado creado por el usuario
+    """
     n = input('Ingrese el tamaño del kernel: ')
     while not n.isdecimal() or int(n) % 2 == 0: #error en caso de que el usuario ingresa un str o el tamaño del kernel es par
-        n = input('Ingrese el tamaño del kernel (debe ser un numero e impar): ')
+        n = input('Ingrese el tamaño del kernel (debe ser un numero impar): ')
     n = int(n)
 
     personalizado_array = np.empty((n,n), dtype = float)
