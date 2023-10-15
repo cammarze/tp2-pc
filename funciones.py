@@ -1,6 +1,6 @@
 import numpy as np
 
-# Funciones para realizarla conovlcuion en escala de grises y RGB, dado una imagen de entrada se realiza
+# Funciones para realizarla convolucion en escala de grises y RGB, dado una imagen de entrada se realiza
 #la convolucion con un kernel especificado. Al finalizar, se lleva a cabo el relleno de bordes
 #normalización y ajuste de tipos de datos.
 
@@ -160,7 +160,7 @@ def motion_blur():
 
 def kernel_personalizado ():
     """
-    Crea un kernel personalizado a partir de los datos ingresados por el ususario.
+    Crea un kernel personalizado a partir de los datos ingresados por el usuario.
     La funcion le solicita al usuario que ingrese el tamaño del kernel a realizar (debe ser un numero entero e impar). Luego, 
     pide los valores para cada fila del kernel. Estos son almacenados en un formato Numpy array. 
 
