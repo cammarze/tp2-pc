@@ -28,6 +28,11 @@ def main():
         plt.imshow(img_arr, cmap='gray')
         plt.show()
 
+        nombre_salida = input('Ingrese el nombre del archivo de salida (SIN extension): ')
+        while '.' in nombre_salida:
+            nombre_salida = input('Nombre SIN extension: ')
+        nombre_salida += '.png' #Para que sea en formato .png
+
         print('OPERACIONES')
         print('-----------')
         for i, operacion in enumerate(f.operaciones.values(), 1): 
@@ -37,8 +42,7 @@ def main():
             print("Operación inválida!")
             exit()
 
-        nombre_salida = input('Ingrese el nombre del archivo de salida (SIN extension): ')
-        nombre_salida += '.png' #Para que sea en formato .png
+
 
         if opcion == '1': 
             # aplica umbralizacion a la imagen utilizando la función umbralizacion del modulo 'f'
