@@ -70,7 +70,7 @@ siguiente fórmula a cada pixel de la imágen:
 
 ```math
 \displaystyle 
-    \frac{(pixel - min)}{{(pixel - min)}
+    \frac{(pixel - min)}{{(max - min)}
         } * 255
 ```
 #### Pixeles de borde
