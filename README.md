@@ -45,7 +45,7 @@ La convolución de matrices consiste en multiplicar elemento a elemento una matr
 Tomando como ejemplo la Figura 6, cuando se ubica el kernel (filter) centrado sobre un elemento de la matriz (en este caso el de valor 2 [fila1, columna 1] de input)
 quedan coincidiendo un elemento del kernel a un elemento de la matriz. Entonces, se multiplican los valores que coinciden entre sí y se suman los resultados.
 El resultado final será una matriz output cuyo elemento ubicado en [fila 0, columna 0] se obtiene como: 
-**2**1 + 1**2 + 1**0 + 4**0 + 2**0 + 5**2 + 3**0 + 5**2 + 7*2 = 38**
+**2***1 + 1***2 + 1***0 + 4***0 + 2***0 + 5***2 + 3***0 + 5***2 + 7*2 = 38**
 Tener en cuenta que la matriz de salida es mas chica por los efectos de borde (ver nota).
 
 ![](https://udesa-pc.github.io/tps/tp2/img/convolution.png)
